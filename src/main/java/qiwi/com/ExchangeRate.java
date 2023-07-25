@@ -15,7 +15,6 @@ import java.util.Scanner;
 
 //Первый вариант через консоль
 public class ExchangeRate {
-    // private static final Pattern PARSING_PATTERN =
     private static final Locale RUSSIAN_LOCALE = new Locale("ru", "RU");
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final HttpClient client = HttpClient.newHttpClient();
@@ -36,6 +35,7 @@ public class ExchangeRate {
                     break;
                 }
                 String out = findExchangeRate(parse);
+
 
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -89,7 +89,8 @@ public class ExchangeRate {
                 //Не успел доделать, но суть была в том, что мы сохраняем xml файл с уникальными кодами ЦБ в файл, с помощью
                 // javax делаем анмаршлинг в модели ItemRate, Item и потом просто ищем нужный нам код валюты формируем точно такой же запрос на
                 // api http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=02/03/2001&date_req2=14/03/2001&VAL_NM_RQ=R01235
-                new RatesFileManager().save(data);
+
+                //TODO: закомментил new RatesFileManager().save(data);
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
